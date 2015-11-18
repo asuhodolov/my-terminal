@@ -1,5 +1,7 @@
 # Terminal Ilya is using
 
+<img src="Screenshot.png" width="500">
+
 - [Homebrew](http://brew.sh)
 - **coreutils** via brew
 - [dircolors-solarized](https://github.com/seebi/dircolors-solarized)
