@@ -3,9 +3,10 @@
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# update PATH for brew
+# update pathes for tools installed with brew
 #
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # rbenv
 #
@@ -15,25 +16,21 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
 
-# bash completion
+# Completion
 #
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# Colorize logfiles and command output
-#
-source "`brew --prefix`/etc/grc.bashrc"
+bind "set completion-ignore-case on"
 
-# Colorize ls
-#
-CLICOLOR=1
-LSCOLORS=Exfxcxdxbxegedabagacad
-
-# Highlightize grep matches
+# Colorize terminal
 #
 export GREP_OPTIONS='--color=auto'
+source "`brew --prefix`/etc/grc.bashrc"
 
-# Colorize iTerm
-#
-export TERM=xterm-color
+eval `gdircolors -b ~/.profile/dircolors/dircolors.256dark`
+
+alias ls='gls --color=auto'
+
+export TERM=xterm-256color
